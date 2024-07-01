@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org"
+	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+	rel="stylesheet" />
+<link type="text/css" rel="stylesheet"
+	href="materialize/css/materialize.min.css" media="screen,projection" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>EventosAPP</title>
+</head>
+<body>
+
+	<h1>Evento</h1>
+	<h3>
+		<a href="/eventos" class="waves-effect waves-light btn"><i
+			class="material-icons left">format_list_bulleted</i>Lista de Eventos</a>
+	</h3>
+	<div th:each="evento : ${evento}" class="container">
+		<p>
+			Nome: <span th:text="${evento.nome}"></span>
+		</p>
+		<p>
+			Local: <span th:text="${evento.local}"></span>
+		</p>
+		<p>
+			Data: <span th:text="${evento.data}"></span>
+		</p>
+		<p>
+			Horário: <span th:text="${evento.horario}"></span>
+		</p>
+	</div>
+	<th:block th:include="mensagemValidacao"></th:block>
+	<form method="post" class="container">
+		RG: <input type="text" value="" name="rg" /> Nome: <input type="text"
+			value="" name="nomeconvidado" />
+		<button class="waves-effect waves-light btn" type="submit">Adicionar</button>
+	</form>
+	
+	<h5>Lista de Convidados</h5>
+	<div class="container" th:each="convidado : ${convidados}">
+		<div class="row">
+			<div class="input-field col s6">
+				<p>
+					<span th:text="${convidado.nomeconvidado}"></span>
+				</p>
+			</div>
+			<div class="input-field col s3">
+				<p>
+					<span th:text="${convidado.rg}"></span>
+				</p>
+			</div>
+		</div>
+	</div>
+
+	<script type="text/javascript" src="materialize/js/materialize.min.js"></script>
+</body>
+</html>
